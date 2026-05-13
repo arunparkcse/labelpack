@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery – Label Pack Industries</title>
+  <link rel="icon" href="https://labelpackme.com/wp-content/uploads/2024/02/fav-removebg-preview.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .gallery-filter {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .filter-btn {
+      padding: 8px 22px;
+      border-radius: var(--radius-full);
+      background: var(--dark-3);
+      border: 1px solid var(--glass-border);
+      color: var(--gray);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      font-family: 'Poppins', sans-serif;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--gradient-primary);
+      border-color: transparent;
+      color: var(--white);
+      box-shadow: var(--shadow-glow);
+    }
+
+    /* Masonry-style gallery */
+    .masonry {
+      columns: 3;
+      column-gap: 16px;
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .masonry-item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+    .masonry-item:hover img { transform: scale(1.07); }
+    .masonry-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(7,17,31,0.8) 0%, transparent 50%);
+      opacity: 0;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+    }
+    .masonry-item:hover .masonry-overlay { opacity: 1; }
+    .masonry-overlay span {
+      font-size: 0.82rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+    .masonry-zoom {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+      opacity: 0;
+      font-size: 2rem;
+      transition: var(--transition);
+    }
+    .masonry-item:hover .masonry-zoom {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) { .masonry { columns: 2; } }
+    @media (max-width: 600px) { .masonry { columns: 1; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="https://labelpackme.com/wp-content/uploads/2024/02/lp-logo-2-removebg-preview.png" alt="Label Pack Logo" />
+  </a>
+  <button class="nav-toggle"><span></span><span></span><span></span></button>
+  <ul class="nav-menu">
+    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+    <li class="nav-item">
+      <a class="nav-link" tabindex="0">About Us
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </a>
+      <div class="dropdown">
+        <a href="company.html">Company</a>
+        <a href="quality-policy.html">Quality Policy</a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="market-focus.html" class="nav-link">Market Focus</a></li>
+    <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
+    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+    <li class="nav-item"><a href="gallery.html" class="nav-link active">Gallery</a></li>
+    <li class="nav-item"><a href="contact.html" class="nav-link nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="hero page-hero" style="min-height:50vh;">
+  <canvas id="particles-canvas"></canvas>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="hero-overlay"></div>
+  <div class="container page-hero-content">
+    <div class="section-subtitle reveal">Our Work</div>
+    <h1 class="headline reveal stagger-1">Label Pack <span class="accent">Gallery</span></h1>
+    <p class="section-desc reveal stagger-2" style="margin-top:16px;">A showcase of our finest label printing work across industries.</p>
+    <div class="breadcrumb reveal stagger-3">
+      <a href="index.html">Home</a><span>›</span>
+      <span class="current">Gallery</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-subtitle reveal">Portfolio</div>
+      <h2 class="section-title reveal stagger-1">Our Finest Work</h2>
+      <p class="section-desc mx-auto reveal stagger-2">Browse through our label printing portfolio — each label crafted with precision and passion.</p>
+    </div>
+
+    <div class="gallery-filter reveal">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Self-Adhesive</button>
+      <button class="filter-btn">OPP Labels</button>
+      <button class="filter-btn">Custom</button>
+      <button class="filter-btn">Food & Beverage</button>
+    </div>
+
+    <!-- Masonry Gallery using available images -->
+    <div class="masonry reveal">
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/Our-products-Self-Adhesive-Labels.jpg" alt="Self-Adhesive Labels" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Self-Adhesive Labels</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/product.jpg" alt="OPP Labels" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>OPP Wrap-Around Labels</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/Our-products-Custom-Labels.jpg" alt="Custom Labels" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Custom Labels</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/02/Home-Image-1.jpg" alt="Factory" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Production Floor</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/02/Services-Artwork-Design.jpg" alt="Artwork Design" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Artwork Design</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/02/Our-Service-proofing.jpg" alt="Proofing" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Proofing Service</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/02/services.jpg" alt="Prepress" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Prepress Operations</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/About-us-Right-Image.jpg" alt="About" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Label Pack Team</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/Quality-Policy-RS-image-1.jpg" alt="Quality Control" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Quality Control</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/Quality-Policy.jpg" alt="Facility" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Our Facility</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/Vision-1.jpg" alt="Vision" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Precision Printing</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/Mission-1.jpg" alt="Mission" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Label Innovation</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/Values-1.jpg" alt="Values" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Premium Materials</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/Bottom-Image-1.jpg" alt="Technology" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Latest Technology</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+      <div class="masonry-item gallery-item">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/02/Bottom-Image-1-1.jpg" alt="Services" class="gallery-img" />
+        <div class="masonry-overlay">
+          <span>Manufacturing Excellence</span>
+        </div>
+        <div class="masonry-zoom">🔍</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATION STRIP -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="flex-center" style="flex-direction:column;gap:24px;text-align:center;">
+      <div class="section-subtitle reveal">Certified Excellence</div>
+      <div class="reveal">
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/Certificate-1-1024x291-1.jpg" alt="ISO Certification" style="max-width:500px;width:100%;border-radius:var(--radius-md);border:1px solid var(--glass-border);" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="orb" style="width:400px;height:400px;top:-80px;left:-80px;"></div>
+  <div class="orb" style="width:300px;height:300px;bottom:-60px;right:-60px;background:var(--secondary);"></div>
+  <div class="container cta-content">
+    <h2 class="reveal">Like What You See?<br/>Let's Create Your Label</h2>
+    <p class="reveal stagger-1">Our team is ready to bring your label vision to life.</p>
+    <div class="btn-group flex-center reveal stagger-2">
+      <a href="contact.html" class="btn btn-accent btn-lg">Request a Quote</a>
+      <a href="products.html" class="btn btn-outline btn-lg">Our Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><img src="https://labelpackme.com/wp-content/uploads/2024/02/lp-logo-2-removebg-preview.png" alt="Label Pack" /></div>
+        <p class="footer-desc">Creating labels that help brands stay relevant in an ever-changing business environment.</p>
+        <div class="footer-social">
+          <a href="#" class="btn-icon">f</a><a href="#" class="btn-icon">𝕏</a>
+          <a href="#" class="btn-icon">in</a><a href="#" class="btn-icon">▶</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a><a href="company.html">Company</a>
+          <a href="quality-policy.html">Quality Policy</a><a href="market-focus.html">Market Focus</a>
+          <a href="products.html">Products</a><a href="services.html">Services</a>
+          <a href="gallery.html">Gallery</a><a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Products</div>
+        <div class="footer-links">
+          <a href="products.html">Self-Adhesive Labels</a>
+          <a href="products.html">OPP Wrap-Around Labels</a>
+          <a href="products.html">Custom Labels</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Contact Us</div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">📍</div>
+          <p>Umm Al Thoub 7, P.O Box: 3227,<br/>Umm Al Quwain, UAE</p>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">📞</div>
+          <a href="tel:+97167669200">+971 6 766 9200</a>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">✉️</div>
+          <a href="mailto:info@labelpackme.com">info@labelpackme.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Label Pack Industries L.L.C. All rights reserved.</p>
+      <p><a href="https://labelpackme.com">labelpackme.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  // Gallery filter interaction
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
