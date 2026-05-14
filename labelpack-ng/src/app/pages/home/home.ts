@@ -17,6 +17,7 @@ export class HomeComponent implements AfterViewInit {
     this.anim.initScrollReveal();
     this.anim.initCounters();
     this.anim.initTiltCards();
-    this.particles.init("particles-canvas");
+    this.anim.initHeroCarousel();
+    this.particles.init('particles-canvas');
   }
 }
