@@ -54,9 +54,17 @@
 }
 
 /* Angular component host elements — force block so they never collapse page width */
-app-root, app-home, app-company, app-products, app-services, app-gallery,
-app-contact, app-market-focus, app-quality-policy,
-app-navbar, app-footer {
+app-root,
+app-home,
+app-company,
+app-products,
+app-services,
+app-gallery,
+app-contact,
+app-market-focus,
+app-quality-policy,
+app-navbar,
+app-footer {
   display: block;
 }
 

@@ -58,8 +58,8 @@ export class AnimationService {
     const newToggle = toggle.cloneNode(true) as HTMLElement;
     toggle.parentNode?.replaceChild(newToggle, toggle);
 
-    const open = () => { newToggle.classList.add('open'); menu.classList.add('open'); document.body.classList.add('menu-open'); newToggle.setAttribute('aria-expanded','true'); };
-    const close = () => { newToggle.classList.remove('open'); menu.classList.remove('open'); document.body.classList.remove('menu-open'); newToggle.setAttribute('aria-expanded','false'); };
+    const open = () => { newToggle.classList.add('open'); menu.classList.add('open'); document.body.classList.add('menu-open'); newToggle.setAttribute('aria-expanded', 'true'); };
+    const close = () => { newToggle.classList.remove('open'); menu.classList.remove('open'); document.body.classList.remove('menu-open'); newToggle.setAttribute('aria-expanded', 'false'); };
 
     newToggle.addEventListener('click', (e) => { e.stopPropagation(); newToggle.classList.contains('open') ? close() : open(); });
     document.addEventListener('click', (e) => { if (!newToggle.contains(e.target as Node) && !menu.contains(e.target as Node)) close(); });
@@ -198,7 +198,7 @@ export class AnimationService {
     counter.style.cssText = 'color:rgba(255,255,255,0.6);font-size:0.8rem;margin-top:12px;font-family:Syne,sans-serif;letter-spacing:0.1em;';
 
     // Prev / Next
-    const mkBtn = (label: string, side: 'left'|'right') => {
+    const mkBtn = (label: string, side: 'left' | 'right') => {
       const b = document.createElement('button');
       b.innerHTML = side === 'left' ? '&#8592;' : '&#8594;';
       b.style.cssText = `position:fixed;top:50%;${side}:20px;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;width:48px;height:48px;border-radius:50%;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;-webkit-tap-highlight-color:transparent;`;
@@ -255,7 +255,7 @@ export class AnimationService {
     dots.forEach((dot, i) => dot.addEventListener('click', () => { clearInterval(timer); go(i); autoPlay(); }));
     document.querySelector('.carousel-prev')?.addEventListener('click', () => { clearInterval(timer); go(current - 1); autoPlay(); });
     document.querySelector('.carousel-next')?.addEventListener('click', () => { clearInterval(timer); go(current + 1); autoPlay(); });
-    autoPlay();
+    go(0); autoPlay();
   }
 
   /* ---- Contact Form ---- */
