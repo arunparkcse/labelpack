@@ -255,7 +255,7 @@ export class AnimationService {
     dots.forEach((dot, i) => dot.addEventListener('click', () => { clearInterval(timer); go(i); autoPlay(); }));
     document.querySelector('.carousel-prev')?.addEventListener('click', () => { clearInterval(timer); go(current - 1); autoPlay(); });
     document.querySelector('.carousel-next')?.addEventListener('click', () => { clearInterval(timer); go(current + 1); autoPlay(); });
-    go(0); autoPlay();
+    autoPlay();
   }
 
   /* ---- Contact Form ---- */
