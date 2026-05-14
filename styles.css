@@ -1055,13 +1055,12 @@ hr.divider-thick {
 
 .cert-img {
   display: block;
-  width: 100%;
-  height: auto;
-  max-width: 220px;   /* own column — more room */
+  width: 50%;
+  height: 50%;
+  max-width: 220px;
   max-height: 90px;
   object-fit: contain;
   object-position: left center;
-  /* override global img rules safely */
   min-height: unset;
 }
 .cert-badge {
@@ -1282,3 +1281,51 @@ hr.divider-thick {
   align-items: center;
   gap: 10px;
   margin-bottom: 12px;
+
+/* ================================================
+   PAGE PRELOADER
+   ================================================ */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 6% 8%;
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+#preloader.done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.preloader-counter {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(5rem, 15vw, 11rem);
+  font-weight: 800;
+  color: var(--black);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 16px;
+}
+.preloader-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  margin-bottom: 24px;
+}
+.preloader-bar {
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.04s linear;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
