@@ -316,7 +316,7 @@ body.menu-open { position: fixed; width: 100%; overflow: hidden; }
   overflow: hidden;
   border-bottom: 1px solid var(--border);
 }
-#particles-canvas { opacity: 0.25; }
+.page-hero #particles-canvas { opacity: 0.25; }
 .page-hero-content {
   padding: 60px 6% 60px;
   position: relative;
@@ -1277,4 +1277,4 @@ hr.divider-thick {
   border-radius: var(--radius-sm);
   font-size: 0.8rem; color: var(--gray-dark); margin-top: 20px;
 }
-.cert-badge img { height: 26px; }
+.cert-badge img { heigh

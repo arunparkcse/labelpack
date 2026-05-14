@@ -1,5 +1,5 @@
 /* ================================================
-   Label Pack Industries — Shared JavaScript
+   Label Pack Industries — Creative Light Theme JS
    Particles, Animations, Navigation
    ================================================ */
 
@@ -32,6 +32,7 @@ class ParticleSystem {
 
   createParticle() {
     const size = Math.random() * 2.5 + 1;
+    /* Light-theme colours — muted so they read on white/cream bg */
     const colors = ['rgba(13,53,135,', 'rgba(26,77,184,', 'rgba(200,160,70,', 'rgba(204,28,28,', 'rgba(0,0,0,'];
     const color = colors[Math.floor(Math.random() * colors.length)];
     return {
@@ -172,9 +173,17 @@ function initScrollReveal() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px -10px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Hero / page-hero elements sit at the viewport bottom (flex-end layout).
+  // Force-reveal them immediately so they're never left invisible.
+  setTimeout(() => {
+    document.querySelectorAll('.hero .reveal, .page-hero .reveal').forEach(el => {
+      el.classList.add('visible');
+    });
+  }, 80);
 }
 
 /* ---- Counter Animation ---- */
@@ -231,7 +240,6 @@ function initMobileMenu() {
   const openMenu = () => {
     toggle.classList.add('open');
     menu.classList.add('open');
-    // iOS body scroll lock: use class instead of overflow style
     document.body.classList.add('menu-open');
   };
   const closeMenu = () => {
@@ -258,7 +266,6 @@ function initMobileMenu() {
 
 /* ---- Touch Dropdown (iOS has no hover) ---- */
 function initTouchDropdown() {
-  // Only wire up touch-based dropdown on non-hover devices
   if (window.matchMedia('(hover: hover)').matches) return;
   document.querySelectorAll('.nav-item').forEach(item => {
     const link = item.querySelector('.nav-link');
@@ -267,7 +274,6 @@ function initTouchDropdown() {
     link.addEventListener('click', e => {
       e.preventDefault();
       const isOpen = item.classList.contains('touch-open');
-      // Close all
       document.querySelectorAll('.nav-item.touch-open').forEach(i => i.classList.remove('touch-open'));
       if (!isOpen) item.classList.add('touch-open');
     });
@@ -279,28 +285,38 @@ function initTouchDropdown() {
   });
 }
 
-/* ---- Gallery Lightbox ---- */
+/* ---- Masonry Gallery Lightbox ---- */
 function initGallery() {
+  // Masonry items (creative-light gallery page)
+  const masonryItems = document.querySelectorAll('.masonry-item');
+  if (masonryItems.length) {
+    masonryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        if (!img) return;
+        openLightbox(img.src, img.alt);
+      });
+    });
+  }
+
+  // Legacy gallery items (dark theme compat)
   const items = document.querySelectorAll('.gallery-item');
-  if (!items.length) return;
-  items.forEach(item => {
-    item.addEventListener('click', () => {
-      const img = item.querySelector('.gallery-img');
-      if (!img) return;
-      const overlay = document.createElement('div');
-      overlay.className = 'lightbox-overlay';
-      overlay.innerHTML = `
-        <div class="lightbox-inner">
-          <button class="lightbox-close">✕</button>
-          <img src="${img.src}" alt="${img.alt}" class="lightbox-img" />
-        </div>`;
-      overlay.style.cssText = `position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);
-        display:flex;align-items:center;justify-content:center;padding:24px;cursor:pointer;
-        animation:fadeIn 0.3s ease;`;
-      const inner = overlay.querySelector('.lightbox-inner');
-      inner.style.cssText = `position:relative;max-width:90vw;max-height:90vh;`;
-      const closeBtn = overlay.querySelector('.lightbox-close');
-      closeBtn.style.cssText = `position:absolute;top:-40px;right:0;background:none;border:none;
-        color:#fff;font-size:1.5rem;cursor:pointer;opacity:0.8;z-index:1;`;
-      const lightImg = overlay.querySelector('.lightbox-img');
-      lightImg.style.cssText = `max-width:100%;max-height:90vh;bord
+  if (items.length) {
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('.gallery-img');
+        if (!img) return;
+        openLightbox(img.src, img.alt);
+      });
+    });
+  }
+}
+
+function openLightbox(src, alt) {
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay';
+  overlay.innerHTML = `
+    <div class="lightbox-inner">
+      <button class="lightbox-close" aria-label="Close">✕</button>
+      <img src="${src}" alt="${alt || ''}" class="lightbox-img" />
+    </div
