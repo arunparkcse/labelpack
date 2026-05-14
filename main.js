@@ -32,7 +32,6 @@ class ParticleSystem {
 
   createParticle() {
     const size = Math.random() * 2.5 + 1;
-    /* Light-theme colours — muted so they read on white/cream bg */
     const colors = ['rgba(13,53,135,', 'rgba(26,77,184,', 'rgba(200,160,70,', 'rgba(204,28,28,', 'rgba(0,0,0,'];
     const color = colors[Math.floor(Math.random() * colors.length)];
     return {
@@ -51,7 +50,7 @@ class ParticleSystem {
   drawParticle(p) {
     this.ctx.beginPath();
     this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    this.ctx.fillStyle = `${p.color}${p.opacity})`;
+    this.ctx.fillStyle = p.color + p.opacity + ')';
     this.ctx.fill();
   }
 
@@ -67,7 +66,7 @@ class ParticleSystem {
           this.ctx.beginPath();
           this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
           this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
-          this.ctx.strokeStyle = `rgba(13,53,135,${alpha})`;
+          this.ctx.strokeStyle = 'rgba(13,53,135,' + alpha + ')';
           this.ctx.lineWidth = 1;
           this.ctx.stroke();
         }
@@ -76,7 +75,6 @@ class ParticleSystem {
   }
 
   updateParticle(p) {
-    // Mouse repulsion
     if (this.mouse.x !== null) {
       const dx = p.x - this.mouse.x;
       const dy = p.y - this.mouse.y;
@@ -87,23 +85,14 @@ class ParticleSystem {
         p.vy += (dy / dist) * force * 0.5;
       }
     }
-
-    // Damping
     p.vx *= 0.98;
     p.vy *= 0.98;
-
-    // Base drift
     p.vx += (Math.random() - 0.5) * 0.02;
     p.vy += (Math.random() - 0.5) * 0.02;
-
-    // Speed limit
     const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
     if (speed > 1.5) { p.vx = (p.vx / speed) * 1.5; p.vy = (p.vy / speed) * 1.5; }
-
     p.x += p.vx;
     p.y += p.vy;
-
-    // Wrap edges
     if (p.x < -10) p.x = this.canvas.width + 10;
     if (p.x > this.canvas.width + 10) p.x = -10;
     if (p.y < -10) p.y = this.canvas.height + 10;
@@ -113,10 +102,7 @@ class ParticleSystem {
   animate() {
     if (!this.canvas) return;
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.particles.forEach(p => {
-      this.updateParticle(p);
-      this.drawParticle(p);
-    });
+    this.particles.forEach(p => { this.updateParticle(p); this.drawParticle(p); });
     this.connectParticles();
     requestAnimationFrame(() => this.animate());
   }
@@ -129,7 +115,6 @@ class ParticleSystem {
         if (p.y > this.canvas.height) p.y = Math.random() * this.canvas.height;
       });
     });
-
     this.canvas.addEventListener('mousemove', e => {
       const rect = this.canvas.getBoundingClientRect();
       this.mouse.x = e.clientX - rect.left;
@@ -152,7 +137,7 @@ function initTiltCards() {
       const cy = rect.height / 2;
       const rotX = -(y - cy) / cy * 8;
       const rotY = (x - cx) / cx * 8;
-      card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(10px)`;
+      card.style.transform = 'perspective(1000px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) translateZ(10px)';
     });
     card.addEventListener('mouseleave', () => {
       card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
@@ -178,8 +163,8 @@ function initScrollReveal() {
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // Hero / page-hero elements sit at the viewport bottom (flex-end layout).
-  // Force-reveal them immediately so they're never left invisible.
-  setTimeout(() => {
+  // Force-reveal them after a short delay so they are never left invisible.
+  setTimeout(function() {
     document.querySelectorAll('.hero .reveal, .page-hero .reveal').forEach(el => {
       el.classList.add('visible');
     });
@@ -221,7 +206,6 @@ function initNav() {
     navbar.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
-  // Mark active nav link
   const current = location.pathname.replace(/\/$/, '') || '/';
   document.querySelectorAll('.nav-link[href]').forEach(link => {
     const href = link.getAttribute('href').replace(/\/$/, '') || '/';
@@ -252,13 +236,9 @@ function initMobileMenu() {
     e.stopPropagation();
     toggle.classList.contains('open') ? closeMenu() : openMenu();
   });
-
-  // Close on outside tap/click
   document.addEventListener('click', e => {
     if (!toggle.contains(e.target) && !menu.contains(e.target)) closeMenu();
   });
-
-  // Close on ESC key
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeMenu();
   });
@@ -285,38 +265,85 @@ function initTouchDropdown() {
   });
 }
 
-/* ---- Masonry Gallery Lightbox ---- */
-function initGallery() {
-  // Masonry items (creative-light gallery page)
-  const masonryItems = document.querySelectorAll('.masonry-item');
-  if (masonryItems.length) {
-    masonryItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const img = item.querySelector('img');
-        if (!img) return;
-        openLightbox(img.src, img.alt);
-      });
-    });
-  }
-
-  // Legacy gallery items (dark theme compat)
-  const items = document.querySelectorAll('.gallery-item');
-  if (items.length) {
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        const img = item.querySelector('.gallery-img');
-        if (!img) return;
-        openLightbox(img.src, img.alt);
-      });
-    });
-  }
+/* ---- Lightbox helper ---- */
+function openLightbox(src, alt) {
+  var overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay';
+  var inner = document.createElement('div');
+  inner.className = 'lightbox-inner';
+  inner.style.cssText = 'position:relative;max-width:90vw;max-height:90vh;';
+  var closeBtn = document.createElement('button');
+  closeBtn.className = 'lightbox-close';
+  closeBtn.setAttribute('aria-label', 'Close');
+  closeBtn.textContent = '✕';
+  closeBtn.style.cssText = 'position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;opacity:0.8;z-index:1;';
+  var lightImg = document.createElement('img');
+  lightImg.src = src;
+  lightImg.alt = alt || '';
+  lightImg.className = 'lightbox-img';
+  lightImg.style.cssText = 'max-width:100%;max-height:90vh;border-radius:12px;object-fit:contain;display:block;';
+  inner.appendChild(closeBtn);
+  inner.appendChild(lightImg);
+  overlay.appendChild(inner);
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);display:flex;align-items:center;justify-content:center;padding:24px;cursor:pointer;';
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+  var close = function() {
+    overlay.remove();
+    document.body.style.overflow = '';
+  };
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', function onKey(e) {
+    if (e.key === 'Escape') { close(); document.removeEventListener('keydown', onKey); }
+  });
 }
 
-function openLightbox(src, alt) {
-  const overlay = document.createElement('div');
-  overlay.className = 'lightbox-overlay';
-  overlay.innerHTML = `
-    <div class="lightbox-inner">
-      <button class="lightbox-close" aria-label="Close">✕</button>
-      <img src="${src}" alt="${alt || ''}" class="lightbox-img" />
-    </div
+/* ---- Gallery ---- */
+function initGallery() {
+  document.querySelectorAll('.masonry-item').forEach(item => {
+    item.addEventListener('click', () => {
+      var img = item.querySelector('img');
+      if (img) openLightbox(img.src, img.alt);
+    });
+  });
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      var img = item.querySelector('.gallery-img');
+      if (img) openLightbox(img.src, img.alt);
+    });
+  });
+}
+
+/* ---- Contact Form ---- */
+function initContactForm() {
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    var btn = form.querySelector('[type="submit"]');
+    var original = btn.innerHTML;
+    btn.innerHTML = '✓ Message Sent!';
+    btn.disabled = true;
+    btn.style.background = 'linear-gradient(135deg, #16a34a, #15803d)';
+    setTimeout(() => {
+      btn.innerHTML = original;
+      btn.disabled = false;
+      btn.style.background = '';
+      form.reset();
+    }, 3000);
+  });
+}
+
+/* ---- On DOM Ready ---- */
+document.addEventListener('DOMContentLoaded', () => {
+  new ParticleSystem('particles-canvas');
+  initScrollReveal();
+  initCounters();
+  initNav();
+  initMobileMenu();
+  initTouchDropdown();
+  initTiltCards();
+  initGallery();
+  initContactForm();
+});
