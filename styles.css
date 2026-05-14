@@ -1052,29 +1052,47 @@ hr.divider-thick {
 }
 .footer-bottom p { font-size: 0.8rem; color: var(--gray); }
 .footer-bottom a { color: var(--primary); }
-.cert-img {
-  height: 48px;
-  width: auto;
-  max-width: none;   /* prevent global max-width:100% from squishing */
-  margin-top: 20px;
-  display: block;
+/* ---- Certificates section ---- */
+.footer-cert {
+  margin-top: 24px;
 }
-.cert-badge img {
-  height: 48px;
+.footer-cert-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 12px;
+}
+.cert-img {
+  display: block;
   width: auto;
-  max-width: none;
-  display: inline-block;
+  height: auto;
+  max-width: 180px;   /* constrain width, let height scale naturally */
+  max-height: 70px;   /* cap height so it doesn't overflow */
+  object-fit: contain;
+  object-position: left center;
+  /* override global img rules safely */
+  min-height: unset;
 }
 .cert-badge {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 12px;
-  margin-top: 20px;
-  /* Remove the box styling — just show image + label cleanly */
+  gap: 10px;
+  margin-top: 0;
   background: none;
   border: none;
   padding: 0;
   border-radius: 0;
+}
+.cert-badge img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 180px;
+  max-height: 70px;
+  object-fit: contain;
 }
 
 /* ================================================
@@ -1276,21 +1294,3 @@ hr.divider-thick {
   align-items: center;
   gap: 10px;
   margin-bottom: 12px;
-}
-.section-subtitle::before {
-  content: ''; width: 28px; height: 2px;
-  background: currentColor; display: block;
-}
-
-/* gradient-animated → static primary color on light */
-.gradient-animated {
-  background: none;
-  -webkit-text-fill-color: var(--primary);
-  color: var(--primary);
-  animation: none;
-}
-
-/* Nav CTA remap */
-.nav-link.nav-cta {
-  background: var(--primary) !important;
-  col
