@@ -2458,6 +2458,27 @@ hr.divider-thick {
   left: 24px;
 }
 
+.nav-toggle span:nth-child(1) {
+  transform: translateY(-5px);
+}
+
+.nav-toggle span:nth-child(3) {
+  transform: translateY(5px);
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(0) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(0) rotate(-45deg);
+}
+
 .carousel-next {
   right: 24px;
 }
