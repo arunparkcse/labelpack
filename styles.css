@@ -126,6 +126,22 @@ body.menu-open { position: fixed; width: 100%; overflow: hidden; }
   transition: var(--transition-fast);
 }
 .nav-link:hover, .nav-link.active { color: var(--primary); }
+/* Underline slide-in on hover */
+.nav-link:not(.nav-cta) {
+  position: relative;
+}
+.nav-link:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  left: 14px; right: 14px; bottom: 2px;
+  height: 1.5px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s ease;
+}
+.nav-link:not(.nav-cta):hover::after,
+.nav-link:not(.nav-cta).active::after { transform: scaleX(1); }
 .nav-link svg { width: 10px; height: 10px; transition: var(--transition-fast); }
 .nav-item:hover .nav-link svg { transform: rotate(180deg); }
 
@@ -249,10 +265,10 @@ body.menu-open { position: fixed; width: 100%; overflow: hidden; }
 }
 .hero-headline {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(3.5rem, 9vw, 9rem);
+  font-size: clamp(2.8rem, 5.5vw, 5.8rem);
   font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
   color: var(--black);
   margin-bottom: 40px;
 }
@@ -383,18 +399,18 @@ body.menu-open { position: fixed; width: 100%; overflow: hidden; }
 
 .display-title {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(2.8rem, 6vw, 6rem);
+  font-size: clamp(2rem, 4vw, 4.2rem);
   font-weight: 800;
-  line-height: 1.0;
-  letter-spacing: -0.035em;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   color: var(--black);
 }
 .section-title {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.6rem, 3vw, 2.8rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   color: var(--black);
 }
 .section-title em {
@@ -969,8 +985,8 @@ hr.divider-thick {
 }
 .cta-content h2 {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(2.5rem, 6vw, 6rem);
-  font-weight: 800; line-height: 1.0; letter-spacing: -0.04em;
+  font-size: clamp(2rem, 4.5vw, 4.5rem);
+  font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;
   margin-bottom: 32px;
 }
 .cta-content h2 em {
@@ -1096,8 +1112,8 @@ hr.divider-thick {
     box-shadow: none;
   }
   .nav-cta { display: inline-flex; width: max-content; margin-top: 8px; }
-  .hero-headline { font-size: clamp(3rem, 12vw, 6rem); }
-  .cta-content h2 { font-size: clamp(2.2rem, 8vw, 4rem); }
+  .hero-headline { font-size: clamp(2.2rem, 8vw, 4rem); }
+  .cta-content h2 { font-size: clamp(1.8rem, 6vw, 3rem); }
   .numbered-item { grid-template-columns: 56px 1fr; gap: 20px; }
 }
 @media (max-width: 600px) {
@@ -1113,10 +1129,10 @@ hr.divider-thick {
   .flip-card { height: 300px; }
   .masonry { columns: 1; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
-  .hero-headline { font-size: clamp(2.5rem, 14vw, 5rem); letter-spacing: -0.03em; }
+  .hero-headline { font-size: clamp(2rem, 11vw, 3.5rem); letter-spacing: -0.02em; }
   .hero-foot { flex-direction: column; align-items: flex-start; }
-  .section-title { font-size: clamp(1.8rem, 8vw, 2.5rem); }
-  .display-title { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+  .section-title { font-size: clamp(1.4rem, 6vw, 2rem); }
+  .display-title { font-size: clamp(1.6rem, 7vw, 2.6rem); }
   .numbered-item { grid-template-columns: 1fr; gap: 12px; }
   .num-label { display: none; }
 }
@@ -1216,10 +1232,10 @@ hr.divider-thick {
 /* Headline on page-hero */
 .headline {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(1.8rem, 3.5vw, 3.5rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   color: var(--black);
 }
 .headline .accent { color: var(--primary); }
@@ -1264,17 +1280,4 @@ hr.divider-thick {
   background: var(--white); border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   font-size: 0.85rem; color: var(--gray-dark);
-  transition: var(--transition-fast); cursor: pointer; font-weight: 700;
-  -webkit-tap-highlight-color: transparent;
-}
-.btn-icon:hover { background: var(--primary); border-color: var(--primary); color: var(--white); }
-
-/* Cert badge */
-.cert-badge {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 8px 16px;
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem; color: var(--gray-dark); margin-top: 20px;
-}
-.cert-badge img { heigh
+  transition: var(--transition-fast); cursor: pointer; font-weight: 700

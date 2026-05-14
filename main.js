@@ -337,6 +337,8 @@ function initContactForm() {
 
 /* ---- On DOM Ready ---- */
 document.addEventListener('DOMContentLoaded', () => {
+  initPreloader();
+  initCursor();
   new ParticleSystem('particles-canvas');
   initScrollReveal();
   initCounters();
@@ -347,3 +349,74 @@ document.addEventListener('DOMContentLoaded', () => {
   initGallery();
   initContactForm();
 });
+
+/* ---- Page Preloader ---- */
+function initPreloader() {
+  var el = document.getElementById('preloader');
+  var num = document.getElementById('preloader-num');
+  var bar = document.getElementById('preloader-bar');
+  if (!el || !num) return;
+
+  var count = 0;
+  var target = 100;
+  var duration = 1400; // ms total
+  var interval = duration / target;
+
+  var timer = setInterval(function() {
+    count++;
+    num.textContent = count;
+    if (bar) bar.style.width = count + '%';
+    if (count >= target) {
+      clearInterval(timer);
+      setTimeout(function() {
+        el.classList.add('done');
+      }, 200);
+    }
+  }, interval);
+}
+
+/* ---- Custom Cursor ---- */
+function initCursor() {
+  if (!window.matchMedia('(hover: hover)').matches) return;
+  var dot = document.getElementById('cursor-dot');
+  var ring = document.getElementById('cursor-ring');
+  if (!dot || !ring) return;
+
+  var mx = 0, my = 0;
+  var rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', function(e) {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px';
+    dot.style.top  = my + 'px';
+  });
+
+  // Ring follows with slight lag
+  (function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animateRing);
+  })();
+
+  // Hover state on interactive elements
+  var hoverEls = 'a, button, .btn, .card, .industry-card, .product-card, .masonry-item, .nav-link, input, textarea, select';
+  document.querySelectorAll(hoverEls).forEach(function(el) {
+    el.addEventListener('mouseenter', function() { document.body.classList.add('cursor-hover'); });
+    el.addEventListener('mouseleave', function() { document.body.classList.remove('cursor-hover'); });
+  });
+  document.addEventListener('mousedown', function() { document.body.classList.add('cursor-click'); });
+  document.addEventListener('mouseup',   function() { document.body.classList.remove('cursor-click'); });
+}
+
+/* Re-run cursor hover binding after dynamic content (if needed) */
+function bindCursorHover() {
+  var hoverEls = 'a, button, .btn, .card, .industry-card, .product-card, .masonry-item';
+  document.querySelectorAll(hoverEls).forEach(function(el) {
+    if (el._cursorBound) return;
+    el._cursorBound = true;
+    el.addEventListener('mouseenter', function() { document.body.classList.add('cursor-hover'); });
+    el.addEventListener('mouseleave', function() { document.body.classList.remove('cursor-hover'); });
+  });
+}
