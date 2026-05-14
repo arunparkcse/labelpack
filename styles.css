@@ -98,7 +98,7 @@ body.menu-open { position: fixed; width: 100%; overflow: hidden; }
 }
 .nav-logo img {
   height: 48px;
-  width: auto;
+  width: 100%;
   /* On light bg, show logo as-is; add drop shadow so it reads on light hero */
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
   transition: var(--transition);
@@ -1003,7 +1003,7 @@ hr.divider-thick {
   border-top: 1px solid var(--border);
   padding: 80px 0 0;
 }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; margin-bottom: 60px; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1.5fr 1fr; gap: 60px; margin-bottom: 60px; }
 .footer-logo { margin-bottom: 20px; }
 .footer-logo img {
   height: 44px;
@@ -1052,25 +1052,13 @@ hr.divider-thick {
 }
 .footer-bottom p { font-size: 0.8rem; color: var(--gray); }
 .footer-bottom a { color: var(--primary); }
-/* ---- Certificates section ---- */
-.footer-cert {
-  margin-top: 24px;
-}
-.footer-cert-label {
-  font-family: 'Syne', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 12px;
-}
+
 .cert-img {
   display: block;
-  width: auto;
+  width: 100%;
   height: auto;
-  max-width: 180px;   /* constrain width, let height scale naturally */
-  max-height: 70px;   /* cap height so it doesn't overflow */
+  max-width: 220px;   /* own column — more room */
+  max-height: 90px;
   object-fit: contain;
   object-position: left center;
   /* override global img rules safely */
@@ -1088,7 +1076,7 @@ hr.divider-thick {
 }
 .cert-badge img {
   display: block;
-  width: auto;
+  width: 100%;
   height: auto;
   max-width: 180px;
   max-height: 70px;
