@@ -238,24 +238,64 @@ export class AnimationService {
   }
 
   /* ---- Hero Carousel ---- */
+  private carouselTimer: any = null;
+
   initHeroCarousel() {
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.carousel-dot');
+    const slides = Array.from(document.querySelectorAll('.carousel-slide')) as HTMLElement[];
+    const dots  = Array.from(document.querySelectorAll('.carousel-dot'))   as HTMLElement[];
     if (!slides.length) return;
+
+    // Clear any previous timer (route re-entry)
+    if (this.carouselTimer) clearInterval(this.carouselTimer);
+
+    // Ensure first slide is active
+    slides.forEach((s, i) => { s.classList.toggle('active', i === 0); s.style.opacity = i === 0 ? '1' : '0'; });
+    dots.forEach((d, i)   => d.classList.toggle('active', i === 0));
     let current = 0;
-    let timer: any;
+
     const go = (n: number) => {
       slides[current].classList.remove('active');
       dots[current]?.classList.remove('active');
-      current = (n + slides.length) % slides.length;
+      current = ((n % slides.length) + slides.length) % slides.length;
       slides[current].classList.add('active');
       dots[current]?.classList.add('active');
     };
-    const autoPlay = () => { timer = setInterval(() => go(current + 1), 5000); };
-    dots.forEach((dot, i) => dot.addEventListener('click', () => { clearInterval(timer); go(i); autoPlay(); }));
-    document.querySelector('.carousel-prev')?.addEventListener('click', () => { clearInterval(timer); go(current - 1); autoPlay(); });
-    document.querySelector('.carousel-next')?.addEventListener('click', () => { clearInterval(timer); go(current + 1); autoPlay(); });
-    go(0); autoPlay();
+
+    const autoPlay = () => {
+      this.carouselTimer = setInterval(() => go(current + 1), 5000);
+    };
+
+    // Remove old listeners by using a flag
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    if (prevBtn) {
+      const newPrev = prevBtn.cloneNode(true) as Element;
+      prevBtn.replaceWith(newPrev);
+      newPrev.addEventListener('click', () => { clearInterval(this.carouselTimer); go(current - 1); autoPlay(); });
+    }
+    if (nextBtn) {
+      const newNext = nextBtn.cloneNode(true) as Element;
+      nextBtn.replaceWith(newNext);
+      newNext.addEventListener('click', () => { clearInterval(this.carouselTimer); go(current + 1); autoPlay(); });
+    }
+    dots.forEach((dot, i) => {
+      const newDot = dot.cloneNode(true) as Element;
+      dot.replaceWith(newDot);
+      newDot.addEventListener('click', () => { clearInterval(this.carouselTimer); go(i); autoPlay(); });
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    const hero = slides[0].closest('.hero-carousel') as HTMLElement;
+    if (hero) {
+      hero.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      hero.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) { clearInterval(this.carouselTimer); go(diff > 0 ? current + 1 : current - 1); autoPlay(); }
+      }, { passive: true });
+    }
+
+    autoPlay();
   }
 
   /* ---- Contact Form ---- */
