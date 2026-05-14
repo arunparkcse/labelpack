@@ -2,26 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Label Pack – High-Quality Self-Adhesive Labels | UAE</title>
-  <meta name="description" content="Label Pack Industries — premium self-adhesive labels, OPP wrap-around, and custom labels for every industry in UAE and beyond." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Label Pack – Premium Self-Adhesive Labels | UAE</title>
+  <meta name="description" content="Label Pack Industries — premium self-adhesive, OPP, and custom labels for every industry in UAE and beyond." />
   <link rel="icon" href="https://labelpackme.com/wp-content/uploads/2024/02/fav-removebg-preview.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<!-- ========== NAVIGATION ========== -->
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="preloader-counter" id="preloader-num">0</div>
+  <div class="preloader-label">Loading</div>
+  <div class="preloader-bar" id="preloader-bar"></div>
+</div>
+
+<!-- CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- NAVBAR -->
 <nav class="navbar">
   <a href="index.html" class="nav-logo">
-    <img src="https://labelpackme.com/wp-content/uploads/2024/02/lp-logo-2-removebg-preview.png" alt="Label Pack Logo" />
+    <img src="https://labelpackme.com/wp-content/uploads/2024/02/lp-logo-2-removebg-preview.png" alt="Label Pack" />
   </a>
-  <button class="nav-toggle" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-menu">
     <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
     <li class="nav-item">
-      <a class="nav-link" tabindex="0">About Us
+      <a class="nav-link" tabindex="0">About
         <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
       </a>
       <div class="dropdown">
@@ -29,7 +38,7 @@
         <a href="quality-policy.html">Quality Policy</a>
       </div>
     </li>
-    <li class="nav-item"><a href="market-focus.html" class="nav-link">Market Focus</a></li>
+    <li class="nav-item"><a href="market-focus.html" class="nav-link">Markets</a></li>
     <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
     <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
     <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
@@ -37,39 +46,60 @@
   </ul>
 </nav>
 
-<!-- ========== HERO ========== -->
+<!-- HERO — Large editorial -->
 <section class="hero">
   <canvas id="particles-canvas"></canvas>
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <div class="hero-overlay"></div>
+  <img src="https://labelpackme.com/wp-content/uploads/2024/02/Home-Image-1.jpg" alt="" class="hero-bg-img" />
 
   <div class="hero-content">
-    <div style="max-width:780px;">
-      <div class="section-subtitle reveal">UAE's Premier Label Manufacturer</div>
-      <h1 class="headline reveal stagger-1">
-        High-Quality<br/>
-        <span class="gradient-animated">Self-Adhesive Labels</span><br/>
-        For Every Application
-      </h1>
-      <p class="section-desc reveal stagger-2" style="margin-top:24px; font-size:1.1rem;">
-        At Label Pack, we create labels that not only reflect your brand's message but help brands stay relevant in an ever-changing business environment — with the quickest turnaround and the most competitive pricing.
+    <div class="hero-eyebrow reveal">UAE's Premier Label Manufacturer — Since Decades</div>
+    <h1 class="hero-headline reveal stagger-1">
+      Labels That<br/>Make Your<br/><em>Brand Speak.</em>
+    </h1>
+    <div class="hero-foot reveal stagger-2">
+      <p class="hero-desc">
+        High-quality self-adhesive, OPP wrap-around, and custom labels crafted for every industry — with the fastest turnaround at the most competitive prices.
       </p>
-      <div class="btn-group reveal stagger-3" style="margin-top:40px;">
-        <a href="products.html" class="btn btn-accent btn-lg arrow-right">Explore Products</a>
+      <div class="hero-actions">
+        <a href="products.html" class="btn btn-dark btn-lg btn-arrow">Explore Products</a>
         <a href="contact.html" class="btn btn-outline btn-lg">Get a Quote</a>
       </div>
     </div>
   </div>
-  <div class="scroll-indicator">
-    <div class="scroll-dot"></div>
+
+  <div class="hero-side-label">Label Pack Industries — UAE</div>
+
+  <div class="scroll-line">
     <span>Scroll</span>
+    <div class="scroll-line-bar"></div>
   </div>
 </section>
 
-<!-- ========== STATS ========== -->
-<section class="section" style="padding-top:0; background:var(--dark-2);">
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>Self-Adhesive Labels</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>OPP Wrap-Around</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Custom Labels</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>10-Color Printing</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>ISO Certified</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>UAE Based</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Fast Turnaround</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>5 Industries</span><div class="marquee-dot"></div></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-item"><span>Self-Adhesive Labels</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>OPP Wrap-Around</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Custom Labels</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>10-Color Printing</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>ISO Certified</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>UAE Based</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>Fast Turnaround</span><div class="marquee-dot"></div></div>
+    <div class="marquee-item"><span>5 Industries</span><div class="marquee-dot"></div></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="section" style="padding-top:0;padding-bottom:0;background:var(--white);">
   <div class="container">
     <div class="stats-grid reveal">
       <div class="stat-item">
@@ -77,205 +107,185 @@
         <div class="stat-label">Years of Experience</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number"><span class="count-up" data-target="10" data-suffix=" Colors">0</span></div>
-        <div class="stat-label">Printing Capacity</div>
+        <div class="stat-number"><span class="count-up" data-target="10" data-suffix="">0</span></div>
+        <div class="stat-label">Colors Print Capacity</div>
       </div>
       <div class="stat-item">
         <div class="stat-number"><span class="count-up" data-target="500" data-suffix="+">0+</span></div>
         <div class="stat-label">Happy Clients</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number"><span class="count-up" data-target="5" data-suffix=" Industries">0</span></div>
-        <div class="stat-label">Markets Served</div>
+        <div class="stat-number"><span class="count-up" data-target="5" data-suffix="">0</span></div>
+        <div class="stat-label">Industries Served</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== ABOUT INTRO ========== -->
+<!-- ABOUT -->
 <section class="section">
   <div class="container">
     <div class="grid-2" style="gap:80px;">
       <div>
-        <div class="section-subtitle reveal">About Label Pack</div>
-        <h2 class="section-title reveal stagger-1" style="margin-bottom:24px;">
-          Passion Behind<br/>Every Label We Print
+        <div class="eyebrow reveal">Our Story</div>
+        <h2 class="section-title reveal stagger-1" style="margin-bottom:28px;">
+          Passion Behind<br/>Every <em>Label</em> We Print
         </h2>
-        <p class="section-desc reveal stagger-2" style="margin-bottom:24px; max-width:100%;">
+        <p class="section-desc reveal stagger-2" style="margin-bottom:20px;">
           At Label Pack, the passion behind the designing of these labels goes deeper. We create labels that not only reflect a brand's message but also help brands stay relevant in an ever-changing business environment.
         </p>
-        <p class="section-desc reveal stagger-3" style="margin-bottom:36px; max-width:100%;">
-          We offer high-quality labels that cater to the needs of industries of all sizes. We use state-of-art technology to print stunning and creative labels with the quickest turnaround time and at the lowest prices.
+        <p class="section-desc reveal stagger-3" style="margin-bottom:36px;">
+          We use state-of-art technology to print stunning and creative labels with the quickest turnaround time and at the lowest prices.
         </p>
-        <a href="company.html" class="btn btn-primary reveal stagger-4">Learn More About Us</a>
+        <a href="company.html" class="btn btn-primary btn-arrow reveal stagger-4">About Us</a>
       </div>
-      <div class="reveal from-right">
-        <div class="img-wrapper" style="border-radius:var(--radius-lg); height:420px;">
-          <img src="https://labelpackme.com/wp-content/uploads/2024/02/Home-Image-1.jpg" alt="Label Pack Factory" style="width:100%;height:100%;object-fit:cover;" />
+      <div class="reveal from-right" style="position:relative;">
+        <div class="img-frame" style="height:460px;">
+          <img src="https://labelpackme.com/wp-content/uploads/2024/02/Home-Image-1.jpg" alt="Label Pack Factory" />
         </div>
-        <div class="float-badge bottom-left" style="z-index:5;">
-          <div style="font-size:0.78rem;color:var(--gray);margin-bottom:4px;">ISO Certified</div>
-          <div style="font-weight:700;font-size:1.1rem;color:var(--accent);">Quality Assured ✓</div>
+        <div class="badge-float br">
+          <p>Certified Quality</p>
+          <strong>ISO Standard ✓</strong>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== WHY LABEL PACK ========== -->
-<section class="section section-alt">
+<!-- WHY LABEL PACK -->
+<section class="section section-light">
   <div class="container">
-    <div class="section-header">
-      <div class="section-subtitle reveal">Our Strengths</div>
-      <h2 class="section-title reveal stagger-1">Why Choose Label Pack?</h2>
-      <p class="section-desc mx-auto reveal stagger-2">We take pride in being a leader in the label industry, delivering excellence at every step of the process.</p>
+    <div class="flex-between mb-64" style="align-items:flex-end;flex-wrap:wrap;gap:24px;">
+      <div>
+        <div class="eyebrow reveal">Our Strengths</div>
+        <h2 class="section-title reveal stagger-1">Why <em>Label Pack?</em></h2>
+      </div>
+      <a href="company.html" class="btn btn-outline reveal stagger-2">Learn More</a>
     </div>
     <div class="grid-3">
       <div class="card tilt-card reveal stagger-1">
-        <div class="icon-badge">🏆</div>
-        <h3 style="font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:12px;">Experts</h3>
-        <p style="color:var(--gray);font-size:0.9rem;line-height:1.7;">Highly-qualified and experienced professionals who understand the needs of the customers and deliver solutions that exceed expectations.</p>
+        <div class="icon-wrap primary">🏆</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:12px;">Expert Team</h3>
+        <p style="color:var(--gray-dark);font-size:0.9rem;line-height:1.8;">Highly-qualified professionals who understand the needs of customers and deliver beyond expectations.</p>
       </div>
       <div class="card tilt-card reveal stagger-2">
-        <div class="icon-badge accent">⚙️</div>
-        <h3 style="font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:12px;">Quality</h3>
-        <p style="color:var(--gray);font-size:0.9rem;line-height:1.7;">Latest machinery and cutting-edge technology from Europe, capable of printing labels up to 10 colors with laminating and foiling.</p>
+        <div class="icon-wrap primary">⚙️</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:12px;">Cutting-Edge Quality</h3>
+        <p style="color:var(--gray-dark);font-size:0.9rem;line-height:1.8;">European machinery capable of 10-color printing, laminating, foiling, and camera inspection systems.</p>
       </div>
       <div class="card tilt-card reveal stagger-3">
-        <div class="icon-badge secondary">📅</div>
-        <h3 style="font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:12px;">Experience</h3>
-        <p style="color:var(--gray);font-size:0.9rem;line-height:1.7;">With decades of experience, you can rest assured that we know what we're doing — delivering consistent quality every single time.</p>
+        <div class="icon-wrap primary">📅</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:12px;">Decades of Experience</h3>
+        <p style="color:var(--gray-dark);font-size:0.9rem;line-height:1.8;">With decades of experience in the label industry, we know exactly what your brand needs.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== PRODUCTS PREVIEW ========== -->
+<!-- SERVICES (numbered, editorial style) -->
 <section class="section">
   <div class="container">
-    <div class="section-header">
-      <div class="section-subtitle reveal">What We Offer</div>
-      <h2 class="section-title reveal stagger-1">Our Products</h2>
-      <p class="section-desc mx-auto reveal stagger-2">Premium labels engineered for durability, visual appeal, and brand impact.</p>
+    <div class="grid-2" style="gap:80px;align-items:start;">
+      <div>
+        <div class="eyebrow reveal">What We Offer</div>
+        <h2 class="section-title reveal stagger-1" style="margin-bottom:48px;">Our <em>Services</em></h2>
+        <div class="numbered-list reveal stagger-2">
+          <div class="numbered-item">
+            <div class="num-label">01</div>
+            <div>
+              <h3>Artwork Design</h3>
+              <p>Your brand image matters. We produce high-quality, creative labels that represent your entire brand identity — from concept to final artwork.</p>
+              <div class="item-tags"><span class="item-tag">Branding</span><span class="item-tag">Creative</span></div>
+            </div>
+          </div>
+          <div class="numbered-item">
+            <div class="num-label">02</div>
+            <div>
+              <h3>Proofing</h3>
+              <p>Review exactly what your label will look like on your material before committing to production — eliminating surprises.</p>
+              <div class="item-tags"><span class="item-tag">Accuracy</span><span class="item-tag">Approval</span></div>
+            </div>
+          </div>
+          <div class="numbered-item">
+            <div class="num-label">03</div>
+            <div>
+              <h3>Prepress</h3>
+              <p>Experienced digital prepress professionals creating optimized print layouts with all necessary adjustments before going to press.</p>
+              <div class="item-tags"><span class="item-tag">Digital</span><span class="item-tag">Precision</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal from-right" style="margin-top:80px;">
+        <div class="img-frame" style="height:520px;">
+          <img src="https://labelpackme.com/wp-content/uploads/2024/02/Services-Artwork-Design.jpg" alt="Our Services" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS GRID -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="flex-between mb-64" style="align-items:flex-end;flex-wrap:wrap;gap:24px;">
+      <div>
+        <div class="eyebrow reveal">What We Make</div>
+        <h2 class="section-title reveal stagger-1">Our <em>Products</em></h2>
+      </div>
+      <a href="products.html" class="btn btn-outline reveal stagger-2">View All</a>
     </div>
     <div class="grid-3">
       <div class="product-card reveal stagger-1">
-        <img src="https://labelpackme.com/wp-content/uploads/2024/03/Our-products-Self-Adhesive-Labels.jpg" alt="Self-Adhesive Labels" class="product-img" />
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/Our-products-Self-Adhesive-Labels.jpg" alt="Self-Adhesive" class="product-img" />
         <div class="product-body">
           <h3>Self-Adhesive Labels</h3>
-          <p>High-quality self-adhesive labels designed to make your products look more appealing and stand out on the shelf.</p>
+          <p>High-performance labels engineered for maximum visual appeal across all surface types.</p>
           <div class="product-features">
-            <span class="feature-tag">Versatile</span>
-            <span class="feature-tag">Excellent Durability</span>
+            <span class="feature-tag">Versatile</span><span class="feature-tag">Durable</span>
           </div>
-          <a href="products.html" class="btn btn-primary" style="padding:10px 24px;font-size:0.85rem;">Learn More</a>
+          <a href="products.html" class="btn btn-primary" style="padding:10px 22px;font-size:0.78rem;">Learn More →</a>
         </div>
       </div>
       <div class="product-card reveal stagger-2">
-        <img src="https://labelpackme.com/wp-content/uploads/2024/03/product.jpg" alt="OPP Wrap-Around Labels" class="product-img" />
+        <img src="https://labelpackme.com/wp-content/uploads/2024/03/product.jpg" alt="OPP Wrap-Around" class="product-img" />
         <div class="product-body">
           <h3>OPP Wrap-Around Labels</h3>
-          <p>Ideal for food & beverage labelling — Oriented Polypropylene labels that are both long-lasting and tough.</p>
+          <p>Long-lasting Oriented Polypropylene labels — the ideal choice for food & beverage.</p>
           <div class="product-features">
-            <span class="feature-tag">Low Extensibility</span>
-            <span class="feature-tag">Excellent Wet Strength</span>
+            <span class="feature-tag">Moisture Resistant</span><span class="feature-tag">Tough</span>
           </div>
-          <a href="products.html" class="btn btn-primary" style="padding:10px 24px;font-size:0.85rem;">Learn More</a>
+          <a href="products.html" class="btn btn-primary" style="padding:10px 22px;font-size:0.78rem;">Learn More →</a>
         </div>
       </div>
       <div class="product-card reveal stagger-3">
         <img src="https://labelpackme.com/wp-content/uploads/2024/03/Our-products-Custom-Labels.jpg" alt="Custom Labels" class="product-img" />
         <div class="product-body">
           <h3>Custom Labels</h3>
-          <p>Tailor-made labels designed to fit your unique requirements, helping you achieve instant brand recognition.</p>
+          <p>Tailor-made labels designed to your exact specification for instant brand recognition.</p>
           <div class="product-features">
-            <span class="feature-tag">Brand Recognition</span>
-            <span class="feature-tag">Durable & Versatile</span>
+            <span class="feature-tag">Any Shape</span><span class="feature-tag">Any Substrate</span>
           </div>
-          <a href="products.html" class="btn btn-primary" style="padding:10px 24px;font-size:0.85rem;">Learn More</a>
+          <a href="products.html" class="btn btn-primary" style="padding:10px 22px;font-size:0.78rem;">Learn More →</a>
         </div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:48px;" class="reveal">
-      <a href="products.html" class="btn btn-outline">View All Products</a>
-    </div>
-  </div>
-</section>
-
-<!-- ========== TECHNOLOGY ========== -->
-<section class="section" style="background:var(--dark-2); position:relative; overflow:hidden;">
-  <div class="orb" style="width:400px;height:400px;background:var(--primary);right:-100px;top:50%;transform:translateY(-50%);opacity:0.15;filter:blur(100px);pointer-events:none;"></div>
-  <div class="container">
-    <div class="grid-2" style="gap:80px;align-items:center;">
-      <div class="reveal from-left">
-        <div class="img-wrapper" style="height:460px;">
-          <img src="https://labelpackme.com/wp-content/uploads/2024/03/Bottom-Image-1.jpg" alt="Label Pack Technology" style="width:100%;height:100%;object-fit:cover;" />
-        </div>
-        <div class="float-badge top-right" style="z-index:5;">
-          <div style="font-size:0.78rem;color:var(--gray);">Printing Capacity</div>
-          <div style="font-weight:700;font-size:1.3rem;color:var(--accent);">Up to 10 Colors</div>
-        </div>
-      </div>
-      <div>
-        <div class="section-subtitle reveal">Technology & Innovation</div>
-        <h2 class="section-title reveal stagger-1" style="margin-bottom:24px;">Latest Technologies<br/>For Top Notch Results</h2>
-        <p class="section-desc reveal stagger-2" style="margin-bottom:32px;max-width:100%;">
-          Our factory has the latest machinery from Europe that is capable of printing labels up to 10 colors — including laminating and foiling. We also have finishing equipment with an online camera and inspection system.
-        </p>
-        <div class="feature-list reveal stagger-3">
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <div class="feature-text"><strong>10-Color Printing</strong>Ultra-precise multi-color print capability for stunning results.</div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <div class="feature-text"><strong>Laminating & Foiling</strong>Premium finishes to elevate your brand's visual identity.</div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check">✓</div>
-            <div class="feature-text"><strong>Camera Inspection System</strong>Automated quality control ensures zero defects reach you.</div>
-          </div>
-        </div>
-        <a href="contact.html" class="btn btn-accent reveal stagger-4" style="margin-top:36px;">Get in Touch</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== MARKETS ========== -->
+<!-- MARKETS -->
 <section class="section">
   <div class="container">
     <div class="section-header">
-      <div class="section-subtitle reveal">Industries We Serve</div>
-      <h2 class="section-title reveal stagger-1">Market Focus</h2>
-      <p class="section-desc mx-auto reveal stagger-2">Specialized label solutions across five key industry verticals.</p>
+      <div class="eyebrow reveal">Industries We Serve</div>
+      <h2 class="section-title reveal stagger-1">Five Market <em>Verticals</em></h2>
     </div>
-    <div class="grid-5" style="grid-template-columns:repeat(5,1fr);">
-      <div class="industry-card reveal stagger-1">
-        <span class="industry-icon">🍔</span>
-        <h3>Food & Beverage</h3>
-        <span class="bg-num">01</span>
-      </div>
-      <div class="industry-card reveal stagger-2">
-        <span class="industry-icon">🛢️</span>
-        <h3>Lubricants & Chemicals</h3>
-        <span class="bg-num">02</span>
-      </div>
-      <div class="industry-card reveal stagger-3">
-        <span class="industry-icon">🧴</span>
-        <h3>Personal & Homecare</h3>
-        <span class="bg-num">03</span>
-      </div>
-      <div class="industry-card reveal stagger-4">
-        <span class="industry-icon">💊</span>
-        <h3>Pharmaceutical</h3>
-        <span class="bg-num">04</span>
-      </div>
-      <div class="industry-card reveal stagger-5">
-        <span class="industry-icon">✈️</span>
-        <h3>Aviation & Logistics</h3>
-        <span class="bg-num">05</span>
-      </div>
+    <div class="grid-5">
+      <div class="industry-card reveal stagger-1"><span class="industry-icon">🍔</span><h3>Food & Beverage</h3><span class="bg-num">01</span></div>
+      <div class="industry-card reveal stagger-2"><span class="industry-icon">🛢️</span><h3>Lubricants & Chemicals</h3><span class="bg-num">02</span></div>
+      <div class="industry-card reveal stagger-3"><span class="industry-icon">🧴</span><h3>Personal & Homecare</h3><span class="bg-num">03</span></div>
+      <div class="industry-card reveal stagger-4"><span class="industry-icon">💊</span><h3>Pharmaceutical</h3><span class="bg-num">04</span></div>
+      <div class="industry-card reveal stagger-5"><span class="industry-icon">✈️</span><h3>Aviation & Logistics</h3><span class="bg-num">05</span></div>
     </div>
     <div style="text-align:center;margin-top:40px;" class="reveal">
       <a href="market-focus.html" class="btn btn-outline">Explore All Markets</a>
@@ -283,74 +293,89 @@
   </div>
 </section>
 
-<!-- ========== CERTIFICATION ========== -->
-<section class="section section-alt">
+<!-- TECHNOLOGY -->
+<section class="section section-light">
   <div class="container">
-    <div class="section-header">
-      <div class="section-subtitle reveal">Trust & Standards</div>
-      <h2 class="section-title reveal stagger-1">Our Certifications</h2>
-      <p class="section-desc mx-auto reveal stagger-2">Certified to international standards so you can trust every label we produce.</p>
-    </div>
-    <div class="flex-center reveal" style="padding:40px;background:var(--dark-3);border-radius:var(--radius-lg);border:1px solid var(--glass-border);">
-      <img src="https://labelpackme.com/wp-content/uploads/2024/03/Certificate-1-1024x291-1.jpg" alt="ISO Certification" style="max-width:600px;width:100%;border-radius:var(--radius-md);" />
+    <div class="grid-2" style="gap:80px;">
+      <div class="reveal from-left" style="position:relative;">
+        <div class="img-frame" style="height:480px;">
+          <img src="https://labelpackme.com/wp-content/uploads/2024/03/Bottom-Image-1.jpg" alt="Technology" />
+        </div>
+        <div class="badge-float tr">
+          <p>Print Capacity</p>
+          <strong>Up to 10 Colors</strong>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow reveal">Technology</div>
+        <h2 class="section-title reveal stagger-1" style="margin-bottom:24px;">Latest European<br/><em>Machinery</em></h2>
+        <p class="section-desc reveal stagger-2" style="margin-bottom:32px;">
+          Our factory houses the latest European machinery capable of 10-color printing, laminating, foiling, and real-time camera inspection to guarantee zero defect output.
+        </p>
+        <div class="feature-list reveal stagger-3">
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <div class="feature-text"><strong>10-Color Precision Printing</strong>Stunning multi-color results for any design.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <div class="feature-text"><strong>Laminating & Foiling</strong>Premium finishes to elevate your brand presence.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check">✓</div>
+            <div class="feature-text"><strong>Online Camera Inspection</strong>Automated quality control — zero defects guaranteed.</div>
+          </div>
+        </div>
+        <a href="contact.html" class="btn btn-primary btn-arrow reveal stagger-4" style="margin-top:36px;">Get in Touch</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ========== CTA ========== -->
+<!-- CTA -->
 <section class="cta-section">
-  <div class="orb" style="width:500px;height:500px;top:-100px;left:-100px;"></div>
-  <div class="orb" style="width:400px;height:400px;bottom:-100px;right:-100px;background:var(--secondary);"></div>
+  <div class="cta-bg-text">LABEL PACK</div>
   <div class="container cta-content">
-    <div class="section-subtitle reveal" style="color:rgba(255,255,255,0.7);">Ready to Start?</div>
-    <h2 class="reveal stagger-1">Let's Create Labels That<br/>Make Your Brand Shine</h2>
-    <p class="reveal stagger-2">Contact us today for a free consultation and quote. Fastest turnaround, best prices in UAE.</p>
-    <div class="btn-group flex-center reveal stagger-3">
-      <a href="contact.html" class="btn btn-accent btn-lg">Get a Free Quote</a>
-      <a href="tel:+97167669200" class="btn btn-outline btn-lg">📞 +971 6 766 9200</a>
+    <div class="eyebrow light reveal">Ready?</div>
+    <h2 class="reveal stagger-1">Let's Build Labels<br/>That Make Your<br/><em>Brand Roar.</em></h2>
+    <p class="reveal stagger-2">Contact us today for a free consultation. Fastest turnaround and best prices in the UAE.</p>
+    <div class="btn-group reveal stagger-3">
+      <a href="contact.html" class="btn btn-outline-white btn-lg btn-arrow">Get a Free Quote</a>
+      <a href="tel:+97167669200" class="btn btn-outline-white btn-lg">📞 +971 6 766 9200</a>
     </div>
   </div>
 </section>
 
-<!-- ========== FOOTER ========== -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div>
         <div class="footer-logo"><img src="https://labelpackme.com/wp-content/uploads/2024/02/lp-logo-2-removebg-preview.png" alt="Label Pack" /></div>
-        <p class="footer-desc">At Label Pack, we create labels that not only reflect a brand's message but also help brands stay relevant in an ever-changing business environment.</p>
+        <p class="footer-desc">Creating labels that help brands stay relevant in an ever-changing business environment.</p>
         <div class="footer-social">
-          <a href="#" class="btn-icon" aria-label="Facebook">f</a>
-          <a href="#" class="btn-icon" aria-label="Twitter">𝕏</a>
-          <a href="#" class="btn-icon" aria-label="LinkedIn">in</a>
-          <a href="#" class="btn-icon" aria-label="YouTube">▶</a>
+          <a href="#" class="social-btn">f</a><a href="#" class="social-btn">𝕏</a>
+          <a href="#" class="social-btn">in</a><a href="#" class="social-btn">▶</a>
         </div>
-        <div class="cert-badge">
-          <img src="https://labelpackme.com/wp-content/uploads/2024/02/Removal-761.png" alt="ISO" />
-          <span>ISO Certified Quality</span>
-        </div>
+        <img src="https://labelpackme.com/wp-content/uploads/2024/02/Removal-761.png" alt="ISO" class="cert-img" />
       </div>
       <div>
         <div class="footer-heading">Quick Links</div>
         <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="company.html">Company</a>
-          <a href="quality-policy.html">Quality Policy</a>
-          <a href="market-focus.html">Market Focus</a>
-          <a href="products.html">Products</a>
-          <a href="services.html">Services</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html">Home</a><a href="company.html">Company</a>
+          <a href="quality-policy.html">Quality Policy</a><a href="market-focus.html">Market Focus</a>
+          <a href="products.html">Products</a><a href="services.html">Services</a>
+          <a href="gallery.html">Gallery</a><a href="contact.html">Contact</a>
         </div>
       </div>
       <div>
         <div class="footer-heading">Products</div>
         <div class="footer-links">
           <a href="products.html">Self-Adhesive Labels</a>
-          <a href="products.html">OPP Wrap-Around Labels</a>
+          <a href="products.html">OPP Wrap-Around</a>
           <a href="products.html">Custom Labels</a>
         </div>
-        <div class="footer-heading" style="margin-top:32px;">Services</div>
+        <div class="footer-heading" style="margin-top:28px;">Services</div>
         <div class="footer-links">
           <a href="services.html">Artwork Design</a>
           <a href="services.html">Proofing</a>
@@ -369,17 +394,4 @@
         </div>
         <div class="footer-contact-item">
           <div class="footer-contact-icon">✉️</div>
-          <a href="mailto:info@labelpackme.com">info@labelpackme.com</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2024 Label Pack Industries L.L.C. All rights reserved.</p>
-      <p><a href="https://labelpackme.com">labelpackme.com</a></p>
-    </div>
-  </div>
-</footer>
-
-<script src="main.js"></script>
-</body>
-</html>
+          <a href="mailto:
