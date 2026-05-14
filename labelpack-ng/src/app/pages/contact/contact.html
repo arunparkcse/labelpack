@@ -1,0 +1,171 @@
+<app-navbar />
+<!-- PAGE HERO -->
+<section class="hero page-hero" style="min-height:50vh;">
+  <canvas id="particles-canvas"></canvas>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="hero-overlay"></div>
+  <div class="container page-hero-content">
+    <div class="section-subtitle reveal">Reach Out</div>
+    <h1 class="headline reveal stagger-1">Get in <span class="accent">Touch</span></h1>
+    <p class="section-desc reveal stagger-2" style="margin-top:16px;">We'd love to hear about your label requirements. Let's create something great together.</p>
+    <div class="breadcrumb reveal stagger-3">
+      <a routerLink="/">Home</a><span>›</span>
+      <span class="current">Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT INFO CARDS -->
+<section class="section">
+  <div class="container">
+    <div class="grid-3" style="margin-bottom:80px;">
+      <div class="contact-info-card reveal stagger-1">
+        <div class="contact-icon">📍</div>
+        <h4>Our Location</h4>
+        <p>
+          <strong style="color:var(--black);">Label Pack Industries L.L.C</strong><br/>
+          Umm Al Thoub 7, Post Box: 3227<br/>
+          Umm Al Quwain, United Arab Emirates
+        </p>
+        <a href="https://maps.google.com/maps?q=label+pack+industries" target="_blank" class="btn btn-primary" style="padding:8px 20px;font-size:0.82rem;margin-top:8px;">View on Map →</a>
+      </div>
+      <div class="contact-info-card reveal stagger-2">
+        <div class="contact-icon" style="background:var(--accent);">📞</div>
+        <h4>Call Us On</h4>
+        <a href="tel:+97167669200" style="font-size:1.3rem;font-weight:700;color:var(--black);letter-spacing:0.02em;">+971 6 766 9200</a>
+        <p style="font-size:0.85rem;color:var(--gray-dark);">Monday – Saturday<br/>8:00 AM – 6:00 PM (GST)</p>
+      </div>
+      <div class="contact-info-card reveal stagger-3">
+        <div class="contact-icon" style="background:linear-gradient(135deg,var(--secondary),#ff4444);">✉️</div>
+        <h4>Email Us</h4>
+        <a href="mailto:info@labelpackme.com" style="font-size:1rem;font-weight:600;color:var(--black);">info@labelpackme.com</a>
+        <p style="font-size:0.85rem;color:var(--gray-dark);">We'll respond within<br/>24 business hours</p>
+      </div>
+    </div>
+
+    <!-- FORM + MAP -->
+    <div class="grid-2" style="gap:60px;align-items:start;">
+      <!-- Form -->
+      <div class="reveal from-left">
+        <div class="section-subtitle" style="margin-bottom:12px;">Send a Message</div>
+        <h2 class="section-title" style="margin-bottom:32px;">We'd Love to Hear<br/>From You</h2>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="firstName">First Name</label>
+              <input class="form-input" type="text" id="firstName" name="firstName" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lastName">Last Name</label>
+              <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="john@company.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number</label>
+              <input class="form-input" type="tel" id="phone" name="phone" placeholder="+971 XX XXX XXXX" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="company">Company Name</label>
+            <input class="form-input" type="text" id="company" name="company" placeholder="Your Company LLC" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject</label>
+            <select class="form-input" id="subject" name="subject" style="cursor:pointer;appearance:none;">
+              <option value="" disabled selected>Select a subject...</option>
+              <option>Self-Adhesive Labels Enquiry</option>
+              <option>OPP Wrap-Around Labels Enquiry</option>
+              <option>Custom Labels Enquiry</option>
+              <option>Quote Request</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Your Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your label requirements, quantities, materials, or any other details..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">
+            Send Message →
+          </button>
+        </form>
+      </div>
+
+      <!-- Map + Social -->
+      <div class="reveal from-right">
+        <div class="map-wrap" style="margin-bottom:32px;">
+          <iframe
+            src="https://maps.google.com/maps?q=label%20pack%20industries&t=m&z=13&output=embed&iwloc=near"
+            title="Label Pack Location"
+            allowfullscreen=""
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <!-- Social Links -->
+        <div style="padding:28px;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);">
+          <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--black);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;">Follow Us</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <a href="#" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-md);transition:var(--transition);color:var(--black);font-size:0.88rem;font-weight:500;" class="social-link">
+              <span style="font-size:1.2rem;">📘</span> Facebook
+            </a>
+            <a href="#" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-md);transition:var(--transition);color:var(--black);font-size:0.88rem;font-weight:500;" class="social-link">
+              <span style="font-size:1.2rem;">🐦</span> Twitter
+            </a>
+            <a href="#" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-md);transition:var(--transition);color:var(--black);font-size:0.88rem;font-weight:500;" class="social-link">
+              <span style="font-size:1.2rem;">💼</span> LinkedIn
+            </a>
+            <a href="#" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-md);transition:var(--transition);color:var(--black);font-size:0.88rem;font-weight:500;" class="social-link">
+              <span style="font-size:1.2rem;">▶️</span> YouTube
+            </a>
+          </div>
+        </div>
+
+        <!-- Working hours -->
+        <div style="padding:28px;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-top:24px;">
+          <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--black);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;">Business Hours</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;justify-content:space-between;font-size:0.88rem;">
+              <span style="color:var(--gray-dark);">Monday – Friday</span>
+              <span style="color:var(--black);font-weight:600;">8:00 AM – 6:00 PM</span>
+            </div>
+            <div style="height:1px;background:var(--glass-border);"></div>
+            <div style="display:flex;justify-content:space-between;font-size:0.88rem;">
+              <span style="color:var(--gray-dark);">Saturday</span>
+              <span style="color:var(--black);font-weight:600;">8:00 AM – 2:00 PM</span>
+            </div>
+            <div style="height:1px;background:var(--glass-border);"></div>
+            <div style="display:flex;justify-content:space-between;font-size:0.88rem;">
+              <span style="color:var(--gray-dark);">Sunday</span>
+              <span style="color:#e87878;font-weight:600;">Closed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK CONTACT STRIP -->
+<section style="background:var(--off-white);padding:60px 0;border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+      <div class="reveal">
+        <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700;color:var(--black);">Ready to get started?</div>
+        <div style="font-size:0.9rem;color:var(--gray-dark);margin-top:6px;">Call us directly or send an email for a fast response.</div>
+      </div>
+      <div class="btn-group reveal stagger-1">
+        <a href="tel:+97167669200" class="btn btn-primary btn-lg">📞 +971 6 766 9200</a>
+        <a href="mailto:info@labelpackme.com" class="btn btn-outline btn-lg">✉️ Email Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<app-footer />
